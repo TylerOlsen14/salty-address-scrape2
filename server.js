@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('corse');
+const cors = require('cors');
 
 const address = require('./routes/api/address')
 
