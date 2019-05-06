@@ -5,6 +5,7 @@ const router = express.Router();
 const Address = require('../../models/address')
 
 // adding a series of routes
+
 // @route   GET api/items
 // @desc    GET all Items
 // @access   Public
@@ -23,10 +24,11 @@ router.get('/:id', async (req, res) => { //represents api/items (because we're a
 // @desc    Create a address entry
 // @access   Public
 router.post('/', (req, res) => { //represents api/items (because we're already in that file)
+  res.send("You just called the post method at '/hello'!\n")
   const newAddress = new Address({
     name: req.body.name, //name comes from a request
-    address: req.body.address, //name comes from a request
-    urla: req.body.urla //name comes from a request
+    address: req.body.address, //address comes from a request
+    urla: req.body.urla //urla comes from a request
   });
   newAddress.save().then(Address => res.json(Address)); //save to the database, spit out JSON
 })
