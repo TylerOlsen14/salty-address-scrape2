@@ -13,8 +13,8 @@ var myInterface = readline.createInterface({
 let serialNumberArray = [];
 myInterface.on('line', function (line) {
     serialNumberArray.push('http://www.utahcounty.gov/LandRecords/Property.asp?av_serial=' + line);
-  
   console.log(serialNumberArray);
   //console.log('http://www.utahcounty.gov/LandRecords/Property.asp?av_serial=' + line);
+  
 });
 

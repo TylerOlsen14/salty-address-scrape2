@@ -1,17 +1,31 @@
-const request = require('request');
-const cheerio = require('cheerio');
+// ohhhh snap! this guy works!!!
+const fs = require('fs');
+var lineReader = require('line-reader');
+var csv = require('fast-csv');
+var cheerio = require('cheerio');
+var request = require('request');
+// 0:68
 
-request('http://www.utahcounty.gov/LandRecords/Property.asp?av_serial=10690166', (error, response, html) => {
-    if(!error && response.statusCode === 200){
-        const $ = cheerio.load(html);
+lineReader.eachLine('./data.csv', function(line, last) {
+    const url = line.slice(0, 69)
+    const urla = line.slice(0, 69)
+    const name = line.slice(70)
+    request(urla, function(err, resp, url) {
+        if (!err){
+        const $ = cheerio.load(url);
+        const td = $('table tr td table tr td table tr:nth-child(4) td:nth-child(1)');
+        const address = (td.text().slice(0, 49))
+        const pair = (name + '\n' + address + '\n' + urla + '\n')
+    fs.appendFile('address.csv', pair, (err) => {
+        if (err) throw err;
+        console.log('saved');
+    })
+        }
+      },
 
-        const td = $('td');
+    );
 
-        const output = td.find('Mailing Address').text();
-
-
-        console.log(output);
-    } else {
-        console.log('ERROR!!!!!');
+    if (last){
+        return false
     }
 });
