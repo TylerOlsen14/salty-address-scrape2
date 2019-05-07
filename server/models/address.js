@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const AddressSchema = new Schema({
   name: String,
   address: String,
-  urla: String,
+  url: String,
 })
 // // Create Schema
 // const AddressSchema = new Schema({

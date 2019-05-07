@@ -28,12 +28,12 @@ router.post('/', (req, res) => { //represents api/items (because we're already i
   const newAddress = new Address({
     name: req.body.name, //name comes from a request
     address: req.body.address, //address comes from a request
-    urla: req.body.urla //urla comes from a request
+    url: req.body.url //url comes from a request
   });
   newAddress.save().then(Address => res.json(Address)); //save to the database, spit out JSON
 })
 
-// @route   POST api/address
+// @route   PUT api/address
 // @desc    Create a address entry
 // @access   Public
 router.put('/:id', (req, res) => { //represents api/items (because we're already in that file)

@@ -16,21 +16,18 @@ lineReader.eachLine('./data.csv', function(line, last) {
           // Address Scrape
         const $ = cheerio.load(url);
         const td = $('table tr td table tr td table tr:nth-child(4) td:nth-child(1)');
-        const address = (td.text().slice(0, 49))
-        console.log(address)
-    pair = name + ('\n ') + address
+        const address = (td.text().slice(17, 70))
+        const newURL = line.slice(0,69)
+        console.log(newURL)
+    pair = "name:" + name + ('\n ') + "address: " + address + ('\n') + "url: " + newURL + ('\n')
     console.log(pair)
-    fs.appendFile('./address.csv', pair, (err) => {
+    fs.appendFile('../address.csv', pair, (err) => {
         if (err) throw err;
         console.log('saved');
     })
+    // fs.
     }
   })
       },
 
     );
-
-//     if (last){
-//         return false
-//     }
-// });
