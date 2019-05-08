@@ -9,8 +9,10 @@ async function myF() {
   lineReader.eachLine("./SerialNumbersWithName.json", function(line, last) {
   // lineReader.eachLine("./data.csv", function(line, last) {
     var content = fs.readFileSync('./SerialNumbersWithName.json')
-    console.log('Output content : ' + content)
-    // console.log(line.name)
+    // console.log('Output content : ' + content)
+    console.log(line)
+
+
   // const url = line.slice(0, 69);
   //   const name = line.slice(70);
   //   const urla = line.slice(0, 69)
@@ -51,5 +53,3 @@ async function myF() {
   // });
 })
   };
-
-myF()
